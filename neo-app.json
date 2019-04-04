@@ -1,0 +1,42 @@
+{
+  "welcomeFile": "/index.html",
+  "routes": [
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "DSF",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "SWA DEV DSF (FE)"
+    },
+    {
+      "path": "/sap/bc/ui5_ui5",
+      "target": {
+        "type": "destination",
+        "name": "DSF",
+        "entryPath": "/sap/bc/ui5_ui5"
+      },
+      "description": "SWA DEV DSF (FE)"
+    }
+  ],
+  "sendWelcomeFileRedirect": true
+}

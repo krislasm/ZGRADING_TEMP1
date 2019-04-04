@@ -1,0 +1,28 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:t="sap.ui.table" controllerName="com.sap.swazgrading.controller.historical">
+	<App>
+		<pages>
+			<Page title="Grading" id="headerLabel" navButtonPress="onBack">
+				<content>
+					<VBox width="100%">
+						<items>
+							<Label text=""/>
+						</items>
+					</VBox>
+					<t:Table id="historicalTable" selectionMode="None" visible="true" class="idTable1"></t:Table>
+				</content>
+				<footer>
+					<Bar>
+						<contentLeft>
+							<Button id="Submit" tap="onSubmit" type="Accept" text="Submit" visible="true"/>
+						</contentLeft>
+						<contentRight>
+							<Button id="Historical" tap="onBack" type="Accept" text="Back"/>
+							<Button icon="sap-icon://download" type="Accept" text="Download" press="onDataExport"/>
+						</contentRight>
+					</Bar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

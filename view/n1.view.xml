@@ -1,0 +1,244 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:t="sap.ui.table" controllerName="com.sap.swazgrading.controller.n1">
+	<App>
+		<pages>
+			<Page title="Grading">
+				<content>
+					<sap.ui.layout:Grid xmlns:sap.ui.layout="sap.ui.layout" id="userListBox" defaultSpan="XL3 L3 M6 S12" class="sapUiSmallMarginTop">
+						<sap.ui.layout:content>
+							<Input id="UserListInp" type="Text" textFormatMode="KeyValue" placeholder="Enter User ID.." showSuggestion="true" showValueHelp="true"
+								width="17em" valueHelpRequest="handleValueHelp" suggestionItems="{userList>/Value}" suggestionItemSelected="suggestionItemSelected">
+								<suggestionItems>
+									<core:ListItem key="{userList>MapUname}" />
+								</suggestionItems>
+							</Input>
+						</sap.ui.layout:content>
+					</sap.ui.layout:Grid>
+					<sap.ui.layout:Grid xmlns:sap.ui.layout="sap.ui.layout" id="__grid0" defaultSpan="XL2 L2 M4 S6">
+						<sap.ui.layout:content>
+							<VBox width="100%" id="__vbox3" class="sapUiMediumMarginTop">
+								<items>
+									<Label text="Year" width="100%" id="__label3" required="true"/>
+									<Select id="idoSelect3" items="{Year>/Value}" change="handleSelectionChange3" width="100%">
+										<core:ListItem key="{Year>yearId}" text="{Year>yearDesc}" tooltip="{Year>yearDesc}" />
+									</Select>
+								</items>
+							</VBox>
+							<VBox width="100%" id="__vbox4" class="sapUiMediumMarginTop">
+								<items>
+									<Label text="Term" width="100%" id="__label4" required="true"/>
+									<Select id="idoSelect4" items="{Term>/Value}" change="handleSelectionChange4" width="100%">
+										<core:ListItem key="{Term>termId}" text="{Term>termDesc}" tooltip="{Term>termDesc}" />
+									</Select>
+								</items>
+							</VBox>
+							<VBox width="100%" id="__vboxGrd" class="sapUiMediumMarginTop">
+								<items>
+									<Label text="Grade" width="100%" id="__labelGrd" required="true"/>
+									<Select id="idoSelectGrd" items="{GRD>/Value}" change="handleSelectionChangeGrd" width="100%">
+										<core:ListItem key="{GRD>GRADE_ID}" text="{GRD>GRADE_TEXT}" tooltip="{GRD>GRADE_TEXT}"/>
+									</Select>
+								</items>
+							</VBox>
+							<VBox width="100%" id="__vbox1" class="sapUiMediumMarginTop">
+								<items>
+									<Label text="Subject" width="100%" id="__label1" required="true"/>
+									<Select id="idoSelect1" items="{Subject>/Value}" change="handleSelectionChange1" width="100%">
+										<core:ListItem key="{Subject>ObjectId}" text="{Subject>Description}" tooltip="{Subject>Description}"/>
+									</Select>
+								</items>
+							</VBox>
+							<VBox width="100%" id="__vbox2" class="sapUiMediumMarginTop">
+								<items>
+									<Label text="Task Type" width="100%" id="__label2" required="true"/>
+									<Select id="idoSelect2" items="{AppraisalType>/Value}" change="handleSelectionChange2" width="100%">
+										<core:ListItem key="{AppraisalType>ObjectId}" text="{AppraisalType>AppraisalTypeId}"/>
+									</Select>
+								</items>
+							</VBox>
+							<VBox width="100%" id="__vbox5" class="sapUiMediumMarginTop">
+								<items>
+									<Label text="Assignment Type" width="100%" id="__label5" required="true"/>
+									<Select id="idoSelect5" items="{AppraisalSubType>/Value}" change="handleSelectionChange5" width="100%">
+										<core:ListItem key="{AppraisalSubType>AppraisalSubTypeId}" text="{AppraisalSubType>AppraisalSubTypeText}"/>
+									</Select>
+								</items>
+							</VBox>
+							<VBox width="100%" id="__vbox6">
+								<items>
+									<Label text="Assignment" width="100%" id="__label6" required="true"/>
+									<Select id="idoSelect6" items="{AssignmentNumber>/Value}" change="handleSelectionChange6" width="100%">
+										<core:ListItem key="{AssignmentNumber>Number}" text="{AssignmentNumber>Number}"/>
+									</Select>
+									<Label text="Minimum" width="100%" id="__label6_2" visible="false" required="true"/>
+									<Input value="{AssignmentNumber>/Value/0/minNumber}" enabled="false" visible="false" width="100%"/>
+								</items>
+							</VBox>
+							<VBox width="100%" id="__vbox7">
+								<items>
+									<Label text="Assignment Name" width="100%" id="__label7" required="true"/>
+									<Input value="{StudentDetails>/Value/0/ASSIGNMENT_NAME}" id="aName" width="100%" tooltip="{StudentDetails>/Value/0/ASSIGNMENT_NAME}" maxLength = "30" />
+								</items>
+							</VBox>
+							<VBox width="100%" id="__vbox8">
+								<items>
+									<Label text="Assignment Date" width="100%" id="__label8" required="true"/>
+									<DatePicker id="DTI1"  placeholder="Enter Date ..." value="{StudentDetails>/Value/0/ASSIGNMENT_DATE}" width="100%"
+										change="dateValidation" tooltip ="{StudentDetails>/Value/0/ASSIGNMENT_DATE}"/>
+								</items>
+							</VBox>
+							<VBox width="100%" id="__vbox9">
+								<items>
+									<Label text="Max Score" width="100%" id="__label9"/>
+									<Input id="maxScore" value="{StudentDetails>/Value/0/MAX_SCORE}" change="maxValidation"   width="100%" maxLength = "4"/>
+								</items>
+							</VBox>
+							<VBox width="100%" id="__vbox10">
+								<items>
+									<Label text="Highest / Lowest Score" width="100%" id="__label10"/>
+									<Input id="max" enabled="false" width="100%"/>
+								</items>
+							</VBox>
+							<VBox width="100%" id="__vbox11">
+								<items>
+									<Label text="Average Score/Percentage" width="100%" id="__label11"/>
+									<Input id="min" enabled="false" width="100%"/>
+								</items>
+							</VBox>
+							<VBox width="100%" id="__vbox12">
+								<items>
+									<Label text="No. of Blank Grades" width="100%" id="__label12"/>
+									<Input id="avg" enabled="false" width="100%"/>
+								</items>
+							</VBox>
+							<VBox width="100%" id="__vbox13">
+								<items>
+									<Label text="No. of Students" width="100%" id="__label13"/>
+									<Input id="no_students" enabled="false" width="100%"/>
+								</items>
+							</VBox>							
+						</sap.ui.layout:content>
+					</sap.ui.layout:Grid>
+					<t:Table id="idTable1" rows="{StudentDetails>/Value}" selectionMode="None" enableBusyIndicator="true" visibleRowCount="30" class="idTable1 sapUiMediumMarginTop">
+						<t:columns>
+							<t:Column id="lastName" width="14%" sortProperty="LastName">
+								<Label text="Last Name"/>
+								<t:template >
+									<Text text="{StudentDetails>LastName}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="14%" sortProperty="FirstName">
+								<Label text="First Name"/>
+								<t:template>
+									<Text text="{StudentDetails>FirstName}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="5%" sortProperty="SCORE" textAlign="Center" >
+								<Label text="Score"/>
+								<t:template >
+									<Input value="{StudentDetails>SCORE}" textAlign="Center" change="updateScore" maxLength = "4"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="8%" visible="false">
+								<Label text="Grade"/>
+								<t:template>
+									<Text text="{StudentDetails>CurrentGrade}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="8%" visible="false">
+								<Label text="Final"/>
+								<t:template>
+									<Text text="{StudentDetails>FINAL_GRADE}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="7%">
+								<Label text="Percentage"/>
+								<t:template>
+									<Text text="{StudentDetails>Percent}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="43%">
+								<Label text="Notes"/>
+								<t:template>
+									<HBox justifyContent="SpaceBetween" width="99%">
+										<Input value="{StudentDetails>Coments}" width="315%" change="comentValidation"/>
+										<Button icon="sap-icon://activity-individual" press="onPress" width="2.4em"/>
+									</HBox>
+								</t:template>
+							</t:Column>
+							<t:Column width="10%" sortProperty="STUDENT_ID" visible="false">
+								<Label text="Student ID"/>
+								<t:template>
+									<Text text="{StudentDetails>STUDENT_ID}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+						</t:columns>
+					</t:Table>
+					<t:Table id="idTable2" rows="{StudentDetails>/Value}" selectionMode="None" enableBusyIndicator="true" visible="false" visibleRowCount="30" class="idTable1">
+						<t:columns>
+							<t:Column width="20%" sortProperty="LastName">
+								<Label text="Last Name"/>
+								<t:template>
+									<Text text="{StudentDetails>LastName}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="20%" sortProperty="FirstName">
+								<Label text="First Name"/>
+								<t:template>
+									<Text text="{StudentDetails>FirstName}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="10%" sortProperty="SCORE" visible="false">
+								<Label text="Score"/>
+								<t:template>
+									<Input value="{StudentDetails>SCORE}" textAlign="Center" change="updateScore" enabled="false" maxLength = "4"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="10%" visible = "false">
+								<Label text="Grade"/>
+								<t:template>
+									<Text text="{StudentDetails>CurrentGrade}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="10%" visible="false">
+								<Label text="Final"/>
+								<t:template>
+									<Text text="{StudentDetails>FINAL_GRADE}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="10%" visible="false">
+								<Label text="Percentage"/>
+								<t:template>
+									<Text text="" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="100%">
+								<Label text="Comments"/>
+								<t:template>
+									<HBox justifyContent="SpaceBetween">
+										<Input value="{StudentDetails>Coments}" width="425%"/>
+										<Button icon="sap-icon://edit" press="onPress" width="2.4em"/>
+									</HBox>
+								</t:template>
+							</t:Column>
+							<t:Column width="20%" sortProperty="STUDENT_ID" visible="false">
+								<Label text="Student ID"/>
+								<t:template>
+									<Text text="{StudentDetails>STUDENT_ID}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+						</t:columns>
+					</t:Table>
+				</content>
+				<footer>
+					<Bar>
+						<contentRight>
+							<Button id="Historical" tap="onHistorical" type="Accept" text="Historical"/>
+							<Button id="app" tap="onSave" type="Accept" text="Save" enabled="true"/>
+						</contentRight>
+					</Bar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

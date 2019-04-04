@@ -1,0 +1,15 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="Teachers"
+		class="sapUiPopupWithPadding"
+		items="{userList>/Value}"
+		search="_handleValueHelpSearch"
+		confirm="_handleValueHelpClose"
+		cancel="_handleValueHelpClose">
+		<StandardListItem
+			title="{userList>MapUname}"
+			description="{userList>Fullname}" />
+	</SelectDialog>
+</core:FragmentDefinition>

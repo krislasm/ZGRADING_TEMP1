@@ -1,0 +1,11 @@
+/* Enter your custom styles here */
+
+.sapMSplitContainerHideMode>.sapMSplitContainerDetail .sapMITB.sapUiResponsiveContentPadding>.sapMITBContainerContent>.sapMITBContent,
+.sapMITB.sapUiResponsiveContentPadding>.sapMITBContainerContent>.sapMITBContent {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.idTable1 tbody td:nth-child(even) {
+    background: rgb(245, 245, 245);
+}
